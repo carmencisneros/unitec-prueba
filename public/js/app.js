@@ -1985,14 +1985,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "FormularioComponent",
   data: function data() {
@@ -2045,6 +2037,8 @@ __webpack_require__.r(__webpack_exports__);
             data: data
           }).then(function (resp) {
             window.location.href = '/home';
+          })["catch"](function (error) {
+            alert('¡Hubo un problema, intenta de nuevo!');
           });
         }
       });
@@ -49550,7 +49544,7 @@ var render = function() {
                 staticClass: "col-md-4 col-form-label text-md-left",
                 attrs: { for: "nombre" }
               },
-              [_vm._v("Nombre(s)")]
+              [_vm._v("Nombre(s) *")]
             ),
             _vm._v(" "),
             _c("input", {
@@ -49590,23 +49584,7 @@ var render = function() {
                   _vm.nombre = $event.target.value
                 }
               }
-            }),
-            _vm._v(" "),
-            _c(
-              "small",
-              {
-                directives: [
-                  {
-                    name: "show",
-                    rawName: "v-show",
-                    value: _vm.errors.has("nombre"),
-                    expression: "errors.has('nombre')"
-                  }
-                ],
-                staticStyle: { color: "red" }
-              },
-              [_vm._v(_vm._s(_vm.errors.first("nombre")))]
-            )
+            })
           ])
         ]),
         _vm._v(" "),
@@ -49618,7 +49596,7 @@ var render = function() {
                 staticClass: "col-md-12 col-form-label text-md-left",
                 attrs: { for: "apellido_paterno" }
               },
-              [_vm._v("Apellido Paterno")]
+              [_vm._v("Apellido Paterno *")]
             ),
             _vm._v(" "),
             _c("input", {
@@ -49657,23 +49635,7 @@ var render = function() {
                   _vm.apellido_paterno = $event.target.value
                 }
               }
-            }),
-            _vm._v(" "),
-            _c(
-              "small",
-              {
-                directives: [
-                  {
-                    name: "show",
-                    rawName: "v-show",
-                    value: _vm.errors.has("apellido_paterno"),
-                    expression: "errors.has('apellido_paterno')"
-                  }
-                ],
-                staticStyle: { color: "red" }
-              },
-              [_vm._v(_vm._s(_vm.errors.first("apellido_paterno")))]
-            )
+            })
           ]),
           _vm._v(" "),
           _c("div", { staticClass: "form-group col-md-6" }, [
@@ -49683,7 +49645,7 @@ var render = function() {
                 staticClass: "col-md-12 col-form-label text-md-left",
                 attrs: { for: "apellido_materno" }
               },
-              [_vm._v("Apellido Materno")]
+              [_vm._v("Apellido Materno *")]
             ),
             _vm._v(" "),
             _c("input", {
@@ -49723,23 +49685,7 @@ var render = function() {
                   _vm.apellido_materno = $event.target.value
                 }
               }
-            }),
-            _vm._v(" "),
-            _c(
-              "small",
-              {
-                directives: [
-                  {
-                    name: "show",
-                    rawName: "v-show",
-                    value: _vm.errors.has("apellido_materno"),
-                    expression: "errors.has('apellido_materno')"
-                  }
-                ],
-                staticStyle: { color: "red" }
-              },
-              [_vm._v(_vm._s(_vm.errors.first("apellido_materno")))]
-            )
+            })
           ])
         ]),
         _vm._v(" "),
@@ -49751,7 +49697,7 @@ var render = function() {
                 staticClass: "col-md-12 col-form-label text-md-left",
                 attrs: { for: "genero" }
               },
-              [_vm._v("Genero")]
+              [_vm._v("Genero *")]
             ),
             _vm._v(" "),
             _c(
@@ -49814,22 +49760,6 @@ var render = function() {
                 })
               ],
               2
-            ),
-            _vm._v(" "),
-            _c(
-              "small",
-              {
-                directives: [
-                  {
-                    name: "show",
-                    rawName: "v-show",
-                    value: _vm.errors.has("genero"),
-                    expression: "errors.has('genero')"
-                  }
-                ],
-                staticStyle: { color: "red" }
-              },
-              [_vm._v(_vm._s(_vm.errors.first("genero")))]
             )
           ]),
           _vm._v(" "),
@@ -49840,7 +49770,7 @@ var render = function() {
                 staticClass: "col-md-12 col-form-label text-md-left",
                 attrs: { for: "edad" }
               },
-              [_vm._v("Edad")]
+              [_vm._v("Edad *")]
             ),
             _vm._v(" "),
             _c("input", {
@@ -49862,8 +49792,10 @@ var render = function() {
               class: { "borde-rojo": _vm.errors.has("edad") },
               attrs: {
                 onKeyPress: "if(this.value.length === 2) return false",
+                type: "number",
+                min: "1",
+                max: "99",
                 id: "edad",
-                type: "text",
                 name: "edad",
                 value: "",
                 placeholder: "Edad"
@@ -49877,23 +49809,7 @@ var render = function() {
                   _vm.edad = $event.target.value
                 }
               }
-            }),
-            _vm._v(" "),
-            _c(
-              "small",
-              {
-                directives: [
-                  {
-                    name: "show",
-                    rawName: "v-show",
-                    value: _vm.errors.has("edad"),
-                    expression: "errors.has('edad')"
-                  }
-                ],
-                staticStyle: { color: "red" }
-              },
-              [_vm._v(_vm._s(_vm.errors.first("edad")))]
-            )
+            })
           ]),
           _vm._v(" "),
           _c("div", { staticClass: "form-group col-md-4" }, [
@@ -49903,7 +49819,7 @@ var render = function() {
                 staticClass: "col-md-12 col-form-label text-md-left",
                 attrs: { for: "estado_civil" }
               },
-              [_vm._v("Estado Civil")]
+              [_vm._v("Estado Civil *")]
             ),
             _vm._v(" "),
             _c(
@@ -49948,22 +49864,6 @@ var render = function() {
                 })
               ],
               2
-            ),
-            _vm._v(" "),
-            _c(
-              "small",
-              {
-                directives: [
-                  {
-                    name: "show",
-                    rawName: "v-show",
-                    value: _vm.errors.has("estado_civil"),
-                    expression: "errors.has('estado_civil')"
-                  }
-                ],
-                staticStyle: { color: "red" }
-              },
-              [_vm._v(_vm._s(_vm.errors.first("estado_civil")))]
             )
           ])
         ]),
@@ -49976,7 +49876,7 @@ var render = function() {
                 staticClass: "col-md-12 col-form-label text-md-left",
                 attrs: { for: "email" }
               },
-              [_vm._v("E-mail")]
+              [_vm._v("E-mail *")]
             ),
             _vm._v(" "),
             _c("input", {
@@ -50019,33 +49919,17 @@ var render = function() {
                   _vm.email = $event.target.value
                 }
               }
-            }),
-            _vm._v(" "),
-            _c(
-              "small",
-              {
-                directives: [
-                  {
-                    name: "show",
-                    rawName: "v-show",
-                    value: _vm.errors.has("email"),
-                    expression: "errors.has('email')"
-                  }
-                ],
-                staticStyle: { color: "red" }
-              },
-              [_vm._v(_vm._s(_vm.errors.first("email")))]
-            )
+            })
           ]),
           _vm._v(" "),
           _c("div", { staticClass: "form-group col-md-6" }, [
             _c(
               "label",
               {
-                staticClass: "col-md-4 col-form-label text-md-left",
+                staticClass: "col-md-12 col-form-label text-md-left",
                 attrs: { for: "contraseña" }
               },
-              [_vm._v("Contraseña")]
+              [_vm._v("Contraseña *")]
             ),
             _vm._v(" "),
             _c("input", {
@@ -50081,23 +49965,7 @@ var render = function() {
                   _vm.contraseña = $event.target.value
                 }
               }
-            }),
-            _vm._v(" "),
-            _c(
-              "small",
-              {
-                directives: [
-                  {
-                    name: "show",
-                    rawName: "v-show",
-                    value: _vm.errors.has("contraseña"),
-                    expression: "errors.has('contraseña')"
-                  }
-                ],
-                staticStyle: { color: "red" }
-              },
-              [_vm._v(_vm._s(_vm.errors.first("contraseña")))]
-            )
+            })
           ])
         ]),
         _vm._v(" "),
@@ -50109,7 +49977,7 @@ var render = function() {
                 staticClass: "col-md-4 col-form-label text-md-left",
                 attrs: { for: "nivel" }
               },
-              [_vm._v("Nivel Intereses")]
+              [_vm._v("Nivel Intereses *")]
             ),
             _vm._v(" "),
             _c(
@@ -50146,27 +50014,20 @@ var render = function() {
                 })
               ],
               2
-            ),
-            _vm._v(" "),
-            _c(
-              "small",
-              {
-                directives: [
-                  {
-                    name: "show",
-                    rawName: "v-show",
-                    value: _vm.errors.has("nivel"),
-                    expression: "errors.has('nivel')"
-                  }
-                ],
-                staticStyle: { color: "red" }
-              },
-              [_vm._v(_vm._s(_vm.errors.first("nivel")))]
             )
           ]),
           _vm._v(" "),
           _vm.nivelSelected != 1 && _vm.nivelSelected != ""
             ? _c("div", { staticClass: "form-group col-md-12" }, [
+                _c(
+                  "label",
+                  {
+                    staticClass: "col-md-4 col-form-label text-md-left",
+                    attrs: { for: "nivel" }
+                  },
+                  [_vm._v("Carrera *")]
+                ),
+                _vm._v(" "),
                 _c(
                   "select",
                   {
