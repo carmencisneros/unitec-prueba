@@ -4,68 +4,60 @@
             <form id="form" method="POST" action @submit.prevent="registrar('form')" class="container">
                 <div class="form-row">
                     <div class="form-group col-md-12">
-                        <label for="nombre" class="col-md-4 col-form-label text-md-left">Nombre(s)</label>
+                        <label for="nombre" class="col-md-4 col-form-label text-md-left">Nombre(s) *</label>
                         <input v-model="nombre" id="nombre" type="text" class="form-control" :class="{'borde-rojo' : errors.has('nombre')}" name="nombre" autocomplete="name" placeholder="Nombre" v-validate="{ required:true, regex:/^[a-zA-Z]+(\s*[a-zA-Z]*)*[a-zA-Z]+$/}">
-                        <small v-show="errors.has('nombre')" style="color:red">{{errors.first('nombre')}}</small>
                     </div>
                 </div>
                 <div class="form-row">
                     <div class="form-group col-md-6">
-                        <label for="apellido_paterno" class="col-md-12 col-form-label text-md-left">Apellido Paterno</label>
+                        <label for="apellido_paterno" class="col-md-12 col-form-label text-md-left">Apellido Paterno *</label>
                         <input v-model="apellido_paterno" id="apellido_paterno" type="text" class="form-control" :class="{'borde-rojo' : errors.has('apellido_paterno')}" name="apellido_paterno" v-validate="{ required:true, regex:/^[a-zA-Z]+(\s*[a-zA-Z]*)*[a-zA-Z]+$/}"  placeholder="Apellido Paterno">
-                        <small v-show="errors.has('apellido_paterno')" style="color:red">{{errors.first('apellido_paterno')}}</small>
                     </div>
                     <div class="form-group col-md-6">
-                        <label for="apellido_materno" class="col-md-12 col-form-label text-md-left">Apellido Materno</label>
+                        <label for="apellido_materno" class="col-md-12 col-form-label text-md-left">Apellido Materno *</label>
                         <input v-model="apellido_materno" id="apellido_materno" type="text" class="form-control" :class="{'borde-rojo' : errors.has('apellido_materno')}" name="apellido_materno" value="" v-validate="{ required:true, regex:/^[a-zA-Z]+(\s*[a-zA-Z]*)*[a-zA-Z]+$/}"  placeholder="Apellido Materno">
-                        <small v-show="errors.has('apellido_materno')" style="color:red">{{errors.first('apellido_materno')}}</small>
                     </div>
                 </div>
                 <div class="form-row">
                     <div class="form-group col-md-4">
-                        <label for="genero" class="col-md-12 col-form-label text-md-left">Genero</label>
+                        <label for="genero" class="col-md-12 col-form-label text-md-left">Genero *</label>
                         <select @change="generoSelect($event)" v-model="generoSelected" id="genero" type="text" class="form-control" :class="{'borde-rojo' : errors.has('genero')}" name="genero" value="" v-validate="'required'" >
                             <option value="">Selecciona una opción</option>
                             <option v-for="genero in generos" :key="genero.id" :value="genero.id">{{genero.descripcion}}</option>
                         </select>
-                        <small v-show="errors.has('genero')" style="color:red">{{errors.first('genero')}}</small>
                     </div>
                     <div class="form-group col-md-4">
-                        <label for="edad" class="col-md-12 col-form-label text-md-left">Edad</label>
-                        <input onKeyPress="if(this.value.length === 2) return false" v-model="edad" id="edad" type="text" class="form-control" :class="{'borde-rojo' : errors.has('edad')}" name="edad" value="" v-validate="{required:true, numeric:true}"  placeholder="Edad">
-                        <small v-show="errors.has('edad')" style="color:red">{{errors.first('edad')}}</small>
+                        <label for="edad" class="col-md-12 col-form-label text-md-left">Edad *</label>
+                        <input onKeyPress="if(this.value.length === 2) return false" type="number" min="1" max="99" v-model="edad" id="edad" class="form-control" :class="{'borde-rojo' : errors.has('edad')}" name="edad" value="" v-validate="{required:true, numeric:true}"  placeholder="Edad">
                     </div>
                     <div class="form-group col-md-4">
-                         <label for="estado_civil" class="col-md-12 col-form-label text-md-left">Estado Civil</label>
+                         <label for="estado_civil" class="col-md-12 col-form-label text-md-left">Estado Civil *</label>
                         <select @change="estado_civilSelect($event)" id="estado_civil" type="text" class="form-control" :class="{'borde-rojo' : errors.has('estado_civil')}" name="estado_civil" value="" v-validate="'required'" >
                             <option value="">Selecciona una opción</option>
                             <option v-for="estado_civil in edosCiviles" :key="estado_civil.id" :value="estado_civil.id">{{estado_civil.descripcion}}</option>
                         </select>   
-                        <small v-show="errors.has('estado_civil')" style="color:red">{{errors.first('estado_civil')}}</small>
                     </div>
                 </div>
                 <div class="form-row">
                     <div class="form-group col-md-6">
-                        <label for="email" class="col-md-12 col-form-label text-md-left">E-mail</label>
+                        <label for="email" class="col-md-12 col-form-label text-md-left">E-mail *</label>
                         <input v-model="email" id="email" type="email" class="form-control" :class="{'borde-rojo' : errors.has('email')}" name="email" value="" v-validate="{ required:true, email:true, min:8, max:50, regex: /^[\w\.]{2,30}@[a-zA-Z]{2,15}\.[a-z]{2,4}(\.[a-z]{2,2})?$/ }"  placeholder="E-mail">
-                        <small v-show="errors.has('email')" style="color:red">{{errors.first('email')}}</small>
                     </div>
                     <div class="form-group col-md-6">
-                        <label for="contraseña" class="col-md-4 col-form-label text-md-left">Contraseña</label>
+                        <label for="contraseña" class="col-md-12 col-form-label text-md-left">Contraseña *</label>
                         <input v-model="contraseña" id="contraseña" type="password" class="form-control" :class="{'borde-rojo' : errors.has('contraseña')}" name="contraseña" value="" v-validate="'required'"  placeholder="Contraseña">
-                        <small v-show="errors.has('contraseña')" style="color:red">{{errors.first('contraseña')}}</small>
                     </div>
                 </div>
                 <div class="form-row">
                     <div class="form-group col-md-12">
-                        <label for="nivel" class="col-md-4 col-form-label text-md-left">Nivel Intereses</label>
+                        <label for="nivel" class="col-md-4 col-form-label text-md-left">Nivel Intereses *</label>
                         <select @change="nivelSelect($event)" id="nivel" type="text" class="form-control" :class="{'borde-rojo' : errors.has('nivel')}" name="nivel" value="" v-validate="'required'" >
                             <option value="">Selecciona una opción</option>
                             <option v-for="nivel in niveles" :key="nivel.id" :value="nivel.id">{{nivel.descripcion}}</option>
                         </select>  
-                        <small v-show="errors.has('nivel')" style="color:red">{{errors.first('nivel')}}</small>
                     </div>
                     <div class="form-group col-md-12" v-if="nivelSelected != 1 && nivelSelected != ''">
+                        <label for="nivel" class="col-md-4 col-form-label text-md-left">Carrera *</label>
                         <select @change="carreraSelect($event)" id="carrera" type="text" class="form-control" name="carrera" value="" v-validate="'required'" :class="{'borde-rojo' : errors.has('carrera')}">
                             <option value="">Selecciona una opción</option>
                             <option v-for="carrera in carreras" :key="carrera.id" :value="carrera.id">{{carrera.descripcion}}</option>
@@ -134,6 +126,8 @@
                         })
                         .then(resp => {
                            window.location.href = '/home'
+                        }).catch(error => {
+                            alert('¡Hubo un problema, intenta de nuevo!')
                         })
                     }
                 })
